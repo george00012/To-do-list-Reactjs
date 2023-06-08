@@ -24,29 +24,26 @@ function ToDoList() {
     setListTask(temp);
 
     setTask("");
-
-    console.log(listTask);
   };
 
   const handleChange = (e) => {
     setTask(e.target.value);
-    console.log(task);
   };
 
-  const handleSaveTask= (taskId, temp)=> {
-    const updatedListTask=listTask.map((task)=>{
-      if(task.id === taskId){
-        return{...task, task: temp};
+  const handleSaveTask = (taskId, temp) => {
+    const updatedListTask = listTask.map((task) => {
+      if (task.id === taskId) {
+        return { ...task, task: temp };
       }
       return task;
-    })
+    });
     setListTask(updatedListTask);
-  }
+  };
 
-  const handleDeleteTask=(id)=>{
-    const temp = listTask.filter(item => item.id !== id)
-    setListTask(temp)
-  }
+  const handleDeleteTask = (id) => {
+    const temp = listTask.filter((item) => item.id !== id);
+    setListTask(temp);
+  };
 
   return (
     <div className="container">
@@ -63,11 +60,13 @@ function ToDoList() {
         <div className="container-info-task">
           {listTask &&
             listTask.map((task) => (
-              <Task key={task.id} 
-              id={task.id} 
-              task={task} 
-              onSave={handleSaveTask} 
-              onDelete={handleDeleteTask}/>
+              <Task
+                key={task.id}
+                id={task.id}
+                task={task}
+                onSave={handleSaveTask}
+                onDelete={handleDeleteTask}
+              />
             ))}
         </div>
       </div>

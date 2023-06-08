@@ -8,35 +8,46 @@ const Task = (props) => {
   const [value, setValue] = useState(task.task);
 
   const handleSave = () => {
-    setEditTask( false);
+    setEditTask(false);
     props.onSave(task.id, value);
   };
 
-
   return (
     <div className="task" id={task.id}>
-      {editTask ? (
-        <>
-          <input
-          className="task-input"
-            type="text"
-            value={value}
-            onChange={(e) => setValue(e.target.value)}
-          />
-          <button className="btn-save" onClick={handleSave}>
-            Save
-          </button>
-          <button className="btn-delete" onClick={()=> onDelete(task.id)}>Delete</button>
-        </>
-      ) : (
-        <>
-          <span className="task-span">{task.task}</span>
-          <button className="btn btn-edit" onClick={() => setEditTask(true)}>
-            Edit
-          </button>
-          <button className="btn btn-borrar" onClick={()=> onDelete(task.id)}>Delete</button>
-        </>
-      )}
+      <div className="general">
+        {editTask ? (
+          <div className="task-list listas">
+            <input
+              className="task-input"
+              type="text"
+              value={value}
+              onChange={(e) => setValue(e.target.value)}
+            />
+            <div className="btn-btn">
+              <button className="btn btn-save" onClick={handleSave}></button>
+              <button
+                className="btn btn-delete delete"
+                onClick={() => onDelete(task.id)}
+              ></button>
+            </div>
+          </div>
+        ) : (
+          <div className="task-span listas">
+            <div className="span-task">{task.task}</div>
+
+            <div className="btn-container">
+              <button
+                className="btn btn-edit save"
+                onClick={() => setEditTask(true)}
+              ></button>
+              <button
+                className="btn btn-delete save"
+                onClick={() => onDelete(task.id)}
+              ></button>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

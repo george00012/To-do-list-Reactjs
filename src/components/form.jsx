@@ -1,18 +1,25 @@
 const Formulario = (props) => {
-    const {task, handleSubmit, handleChange} = props;
+  const { task, handleSubmit, handleChange } = props;
 
-    return (
-        <form className="formulario">
-            <input type="text" placeholder="Add task"
-                onChange={handleChange}
-                value={task}
-                className="add"/>
-            <button type="submit" className="btn-submit" value="add"
-                onClick={handleSubmit}>
-                Submit
-            </button>
-        </form>
-    );
+  return (
+    <div className="form">
+    <form className="formulario">
+      <input
+        type="text"
+        placeholder="Add task"
+        onChange={handleChange}
+        value={task}
+        className="add"
+      />
+      <button
+        type="submit"
+        className="btn btn-submit"
+        value="add"
+        onClick={handleSubmit}
+      ></button>
+    </form>
+    </div>
+  );
 };
 
 export default Formulario;
